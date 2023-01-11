@@ -1,0 +1,22 @@
+# vim: filetype=conf
+
+set sandbox none
+set statusbar-h-padding 0
+set statusbar-v-padding 0
+set page-padding 1
+set selection-clipboard clipboard
+set adjust-open "best-fit"
+set pages-per-row 1
+set guioptions ""
+set recolor "true"
+
+map ctrl+u scroll half-up
+map ctrl+d scroll half-down
+# map D toggle_page_mode
+map r rotate
+map ctrl+r reload
+map i recolor
+map p print
+map gg goto top
+map K zoom in
+map J zoom out

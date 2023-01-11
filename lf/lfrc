@@ -1,0 +1,156 @@
+# vim: filetype=conf
+
+set shell bash
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 15
+set icons
+set period 1
+set hiddenfiles ".*:*.aux:*.log:*.bbl:*.bcf:*.blg:*.run.xml"
+# set hidden
+set cleaner '~/.config/lf/cleaner'
+set previewer '~/.config/lf/scope'
+set relativenumber
+
+# file --mime-type $f -b
+cmd open ${{
+    case $(file --mime-type $f -b) in
+        image/vnd.djvu|application/pdf|application/octet-stream) 
+            setsid -f zathura $fx >/dev/null 2>&1 ;;
+
+        text/*|application/json|application/x-lz4+json|inode/x-empty|inode/symlink) 
+            nvim $fx;;
+
+        image/*) 
+            rotdir $f | grep -i "\.\(png\|jpg\|jpeg\|gif\|webp\|tif\|ico\)\(_large\)*$" | nsxiv -aio 2>/dev/null | lf-select ;;
+
+        audio/*) 
+            mpv --audio-display=no --volume=20 $f ;;
+
+        video/*) 
+            setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+
+        video/mp4*) 
+            setsid -f mpv $f -quiet >/dev/null 2>&1 ;;
+
+        application/pdf|application/vnd*|application/epub*) 
+            setsid -f zathura $fx >/dev/null 2>&1 ;;
+
+        application/pgp-encrypted) nvim $fx ;;
+        application/vnd.openxmlformats-officedocument.wordprocessingml.document|application/vnd.oasis.opendocument.text) setsid -f lowriter $fx >/dev/null 2>&1 ;;
+        application/vnd.openxmlformats-officedocument.spreadsheetml.sheet|application/octet-stream|application/vnd.oasis.opendocument.spreadsheet|application/vnd.oasis.opendocument.spreadsheet-template) setsid -f localc $fx >/dev/null 2>&1 ;;
+        application/vnd.openxmlformats-officedocument.presentationml.presentation|application/vnd.oasis.opendocument.presentation-template|application/vnd.oasis.opendocument.presentation|application/vnd.ms-powerpoint) setsid -f loimpress $fx >/dev/null 2>&1 ;;
+        application/vnd.oasis.opendocument.graphics|application/vnd.oasis.opendocument.graphics-template) setsid -f lodraw $fx >/dev/null 2>&1 ;;
+        application/vnd.oasis.opendocument.formula) setsid -f lomath $fx >/dev/null 2>&1 ;;
+        application/vnd.oasis.opendocument.database) setsid -f lobase $fx >/dev/null 2>&1 ;;
+
+        *) 
+            for f in $fx; do setsid -f $OPENER $f >/dev/null 2>&1; done;;
+    esac
+}}
+
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ $ans = "y" ] && rm -rf -- $fx
+}}
+
+cmd mkdir ${{
+    printf "Directory Name: "
+    read ans
+    mkdir $ans
+}}
+
+cmd mkfile ${{
+    printf "File Name: "
+    read ans
+    nvim $ans
+}}
+
+cmd mkscript ${{
+    for file in "$fx"
+    do
+        chmod +x $file
+    done
+
+    lf -remote 'send reload'
+}}
+
+cmd extract ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "extract?[y/N]"
+	read ans
+	[ $ans = "y" ] && aunpack $fx
+}}
+
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ $ans = "y" ] && rm -rf -- $fx
+}}
+
+map d
+map g
+map gh
+map m
+map o
+map e
+map f
+map s
+map i
+map r
+map M
+
+map <c-c> quit
+map <esc> quit
+
+map w $ls -At | mpv --mute --loop -playlist -
+
+map p paste
+map x cut
+map dd delete
+map y copy
+map u :unselect; clear
+map c clear
+map e extract
+# map f $lf -remote "send $id select \"$(export SKIM_DEFAULT_COMMAND='fd --type directory --exclude node_modules' && sk --header 'Jump to directory')\""
+map f $lf -remote "send $id select \"$(export SKIM_DEFAULT_COMMAND='fd --exclude node_modules' && sk --header 'Jump to directory')\""
+map F $lf -remote "send $id select \"$(export SKIM_DEFAULT_COMMAND='fd --hidden --exclude node_modules' && sk --header 'Jump to file')\""
+map <c-r> reload
+map V $nvim
+map ms mkscript
+map md mkdir
+map mf mkfile
+map <C-a> mark-save
+map M mark-load
+map X mark-remove
+
+map A rename # at the very end
+map I push A<c-a> # at the very beginning
+map i push A<a-b><a-b><a-f> # before extension
+map a push A<a-b> # after extension
+map r rename
+map R $mmv $(ls -A)
+
+map gg top
+map gr cd /
+map gh cd
+map gu cd /usr
+map ge cd /etc
+map gd cd ~/doc
+map gt cd ~/tmp
+map gi cd ~/img
+map gm cd ~/music
+map gM cd ~/mnt
+map gc cd ~/.config
+map gl cd ~/.local
+
+map <C-w> cmd-delete-word

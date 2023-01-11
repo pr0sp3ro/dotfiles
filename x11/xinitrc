@@ -1,0 +1,21 @@
+#!/bin/sh
+
+# setbg &
+xrdb "$XDG_CONFIG_HOME/x11/xresources" &
+bluetoothctl power on
+nm-applet &
+# nm-applet --indicator &
+blueman-applet &
+xcompmgr & # transparency
+unclutter & # remove mouse when idle
+# xset s off & # screen is always on
+# xset -dpms & # screen is always on
+mpd &
+remaps us &
+systemctl --user import-environment DISPLAY # for dunst
+dunst &
+routercheck &
+batterycheck &
+ssh-agent -s &
+
+exec i3

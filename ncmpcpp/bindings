@@ -1,0 +1,50 @@
+# vim: filetype=conf
+
+def_key "k"
+  scroll_up
+def_key "j"
+  scroll_down
+def_key "ctrl-u"
+  page_up
+def_key "ctrl-d"
+  page_down
+def_key "g"
+  move_home
+def_key "G"
+  move_end
+def_key "h"
+  previous_column
+def_key "h"
+  jump_to_parent_directory
+def_key "l"
+    next_column
+def_key "l"
+  enter_directory
+def_key "l"
+  run_action
+def_key "l"
+  play_item
+
+def_key "x"
+  delete_playlist_items
+def_key "x"
+  delete_browser_items
+def_key "x"
+  delete_stored_playlist
+def_key "="
+  volume_up
+def_key "n"
+  next_found_item
+def_key "N"
+  previous_found_item
+
+def_key "w"
+  dummy
+def_key "e"
+  dummy
+def_key "L"
+  dummy
+def_key "f"
+  dummy
+def_key "F"
+  dummy

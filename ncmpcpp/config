@@ -1,0 +1,18 @@
+# vim: filetype=conf
+
+# song_columns_list_format = "(7)[yellow]{l} (70)[green]{f}"
+# song_list_format = "{$3%f$9}$R{$6%b $9}{$4%l$9}"
+
+ncmpcpp_directory = "~/.config/ncmpcpp"
+lyrics_directory = "~/.local/share/ncmpcpp/lyrics"
+mpd_music_dir = "~/music"
+
+autocenter_mode = "yes"
+cyclic_scrolling = "yes"
+header_text_scrolling = "yes"
+jump_to_now_playing_song_at_start = "yes"
+lines_scrolled = "2"
+
+external_editor = nvim
+use_console_editor = yes
+user_interface = "alternative"

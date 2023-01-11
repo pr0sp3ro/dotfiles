@@ -1,0 +1,30 @@
+#!/bin/sh
+
+while read file
+do
+    case "$1" in
+        "d") 
+            [ "$(printf "Yes\\nNo" | dmenu -i -p "Delete $file?")" = "Yes" ] && rm "$file" ;;
+        "w") 
+            isinstalled setbg || exit
+            setbg "$file" & ;;
+        "b") 
+            isinstalled betterlockscreen || exit
+            betterlockscreen -u "$file" & ;;
+        "y") 
+            isinstalled xclip || exit
+            xclip -selection clipboard -t image/png -i "$file" && notify-send "Image copied to clipboard" & ;;
+        "g") 
+            isinstalled gimp || exit
+            setsid -f gimp "$file" ;;
+        "r") 
+            isinstalled convert || exit
+            convert -rotate 90 "$file" "$file" ;;
+        "R") 
+            isinstalled convert || exit
+            convert -rotate -90 "$file" "$file" ;;
+        "f") 
+            isinstalled convert || exit
+            convert -flop "$file" "$file" ;;
+    esac
+done
