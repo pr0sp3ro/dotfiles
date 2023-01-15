@@ -107,7 +107,7 @@ bindsym $mod+F1 exec "remaps dmenu"
 bindsym $mod+F2 exec "dmenudisplay"
 bindsym Print exec "dmenumaim"
 bindsym $mod+BackSpace exec --no-startup-id "dunstctl close"
-bindsym $mod+0 exec --no-startup-id "clclip"
+bindsym $mod+0 exec --no-startup-id "clearclipboard"
 bindsym $mod+Delete exec "dmenukill"
 bindsym $mod+y exec "dmenusub"
 bindsym $mod+Shift+y exec "dmenusuball"
@@ -125,7 +125,7 @@ bindsym $mod+Insert exec "2mins"
 bindsym $mod+Shift+d exec "keepmenu"
 bindsym $mod+n workspace next
 bindsym $mod+p workspace prev
-bindsym $mod+End exec --no-startup-id "lightswitch"
+bindsym $mod+End exec --no-startup-id "xbacklighttoggle"
 
 bar {
         mode dock

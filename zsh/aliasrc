@@ -76,18 +76,7 @@ alias py="python3"
 alias py2="python2"
 
 alias g="git"
-alias gi="git init"
-alias ga="git add"
-alias gau="git add -u"
-alias gl="git log"
-alias gs="git status"
-alias gc="git commit -m"
-alias gcl="git clone"
-alias gps="git push"
-alias gpl="git pull"
-alias grm="git rm --cached"
-alias grmf="git rm"
-alias gbc="git --git-dir=$HOME/.local/git/dotfiles --work-tree=$HOME/.config"
+alias gdf="git --git-dir=$HOME/.local/git/dotfiles --work-tree=$HOME/.config"
 
 gten(){ translate -s en -t pl $* }
 gtuk(){ translate -s uk -t pl $* }

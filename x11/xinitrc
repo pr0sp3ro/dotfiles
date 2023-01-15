@@ -16,6 +16,5 @@ systemctl --user import-environment DISPLAY # for dunst
 dunst &
 routercheck &
 batterycheck &
-ssh-agent -s &
 
 exec i3
