@@ -18,6 +18,10 @@ zstyle ':completion:*' list-colors 'di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43
 bindkey -v
 export KEYTIMEOUT=1
 
+source "$XDG_CONFIG_HOME/zsh/aliasrc"
+source "$XDG_CONFIG_HOME/zsh/prompt.zsh"
+source "$XDG_CONFIG_HOME/zsh/vim.zsh"
+
 autoload -U up-line-or-beginning-search; zle -N up-line-or-beginning-search
 autoload -U down-line-or-beginning-search; zle -N down-line-or-beginning-search
 bindkey "^p" up-line-or-beginning-search
@@ -42,15 +46,11 @@ lfcd () {
     fi
 }
 
-alias spseg="source pse git"
-alias spses="source pse src"
-alias spsets="source pse tsrc"
-
 bindkey -s '^o' '^ulfcd^m'
 bindkey -s '^f' '^ufg^m'
-bindkey -s '^g' '^uspseg^m'
-bindkey -s '^s' '^uspses^m'
-bindkey -s '^t' '^uspsets^m'
+bindkey -s '^g' '^usource pse git^m'
+bindkey -s '^s' '^usource pse src^m'
+bindkey -s '^t' '^usource pse tsrc^m'
 bindkey '^[[P' delete-char
 bindkey '^r' history-incremental-search-backward
 
@@ -58,10 +58,6 @@ bindkey '^r' history-incremental-search-backward
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 bindkey -M vicmd '^e' edit-command-line
-
-source "$XDG_CONFIG_HOME/zsh/aliasrc"
-source "$XDG_CONFIG_HOME/zsh/prompt.zsh"
-source "$XDG_CONFIG_HOME/zsh/vim.zsh"
 
 source "/usr/share/zsh/plugins/zsh-system-clipboard/zsh-system-clipboard.zsh"
 source "/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh"

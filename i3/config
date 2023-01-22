@@ -23,6 +23,7 @@ bindsym $mod+Shift+m exec "pavucontrol -t 3"
 bindsym $mod+q kill
 bindsym $mod+Return exec "alacritty"
 bindsym $mod+d exec --no-startup-id "dmenu_run"
+# bindsym $mod+d exec --no-startup-id "rofi -show drun"
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
