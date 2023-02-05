@@ -14,9 +14,6 @@ alias dt="cd $XDG_DATA_HOME && l"
 alias mn="cd $HOME/mnt && l"
 alias ph="cd $HOME/mnt/phone"
 alias dev="cd $HOME/mnt/dev"
-alias ts="cd $HOME/tmp/src && l"
-alias s="cd $HOME/.local/src && la"
-alias G="cd $HOME/.local/git & ls -a"
 
 alias cfx="cd $XDG_CONFIG_HOME/x11 && nvim"
 alias cfv="cd $XDG_CONFIG_HOME/nvim && nvim"
@@ -28,7 +25,7 @@ alias cfA="cd $XDG_CONFIG_HOME/alacritty && nvim alacritty.yml"
 alias cfi="cd $XDG_CONFIG_HOME/i3 && nvim config"
 alias cfis="cd $XDG_CONFIG_HOME/i3status && nvim config"
 alias cfib="cd $XDG_CONFIG_HOME/i3blocks && nvim config"
-alias subs="cd $XDG_DOCUMENTS_DIR && nvim ytsubs"
+alias subs="cd $XDG_DOCUMENTS_DIR/ytsubs && nvim"
 alias bm="cd $XDG_DOCUMENTS_DIR/bookmarks && nvim bookmarks"
 alias vw="cd $XDG_DOCUMENTS_DIR/vimwiki && nvim index.md"
 
@@ -75,8 +72,7 @@ alias ffmpeg="ffmpeg -hide_banner"
 alias py="python3"
 alias py2="python2"
 
-alias g="git"
-alias gdf="git --git-dir=$HOME/.local/git/dotfiles --work-tree=$HOME/.config"
+alias gitdf="git --git-dir=$HOME/.local/git/dotfiles --work-tree=$HOME/.config"
 
 gten(){ translate -s en -t pl $* }
 gtuk(){ translate -s uk -t pl $* }

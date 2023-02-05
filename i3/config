@@ -5,6 +5,14 @@ font pango:Monospace 8.5
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id "xwallpaper --zoom $HOME/img/background"
 
+for_window [class="Tor Browser"] floating enable
+for_window [class="Nsxiv"] floating enable
+for_window [class="Blueman-manager"] floating enable
+for_window [class="Wpa_gui"] floating enable
+for_window [class="mpv"] floating enable
+for_window [class="stacer"] floating enable
+for_window [class="opensnitch-ui"] floating enable
+
 set $mod Mod4
 
 # use Mouse+$mod to drag floating windows to their wanted position
@@ -113,7 +121,7 @@ bindsym $mod+Delete exec "dmenukill"
 bindsym $mod+y exec "dmenusub"
 bindsym $mod+Shift+y exec "dmenusuball"
 bindsym $mod+u exec "dmenusites"
-bindsym $mod+Shift+u exec "alacritty -e nvim $HOME/doc/bookmarks"
+bindsym $mod+Shift+u exec "alacritty -e nvim $HOME/doc/bookmarks/sites.md"
 bindsym $mod+i exec "dmenunet"
 bindsym $mod+Shift+i exec "networkmanager_dmenu"
 bindsym $mod+bracketleft exec --no-startup-id "xbacklight -dec 5"
