@@ -67,7 +67,8 @@ cmd mkdir ${{
 cmd mkfile ${{
     printf "File Name: "
     read ans
-    nvim $ans
+    touch $ans
+    # nvim $ans
 }}
 
 cmd mkscript ${{
